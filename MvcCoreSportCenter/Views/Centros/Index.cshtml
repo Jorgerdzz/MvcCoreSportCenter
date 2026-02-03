@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Centro>
+
+<h1>Centros disponibles</h1>
+
+<form method="POST">
+    <label>Seleccione el tipo de centro</label>
+    <select class="form-control" name="tipocentro">
+        @foreach (string tipo in ViewData["TiposCentro"] as List<string>)
+            {
+                <option>@tipo</option>
+            }
+        </select>
+        <button class="btn btn-success">Mostrar centros disponibles</button>
+</form>
+
+@if(Model != null)
+{
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>DIRECCION</th>
+                <th>CIUDAD</th>
+                <th>TIPO CENTRO</th>
+                <th>ESTADO</th>
+                <th>VER PISTAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Centro centro in Model)
+            {
+                <tr>
+                    <td>@centro.Nombre</td>
+                    <td>@centro.Direccion</td>
+                    <td>@centro.Ciudad</td>
+                    <td>@centro.TipoCentro</td>
+                    <td>@centro.Estado</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Pistas" asp-action="Index" asp-route-id="@centro.IdCentro">Ver centro</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

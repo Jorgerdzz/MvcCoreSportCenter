@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DatosCentro
+
+<h1>Datos del centro seleccionado</h1>
+
+@if (Model != null)
+{
+    <ul class="list-group">
+        <li class="list-group-item">
+            Nombre: @Model.Nombre
+        </li>
+        <li class="list-group-item">
+            Direccion: @Model.Direccion
+        </li>
+        <li class="list-group-item">
+            Ciudad: @Model.Ciudad
+        </li>
+        <li class="list-group-item">
+            Tipo centro: @Model.TipoCentro
+        </li>
+        <li class="list-group-item">
+            Estado: @Model.Estado
+        </li>
+    </ul>
+
+    <h1>Pistas disponibles</h1>
+
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>NOMBRE PISTA</th>
+                <th>PRECIO POR HORA</th>
+                <th>TECHADA</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pista pista in Model.Pistas)
+            {
+                <tr>
+                    <td>@pista.NombrePista</td>
+                    <td>@pista.PrecioHora</td>
+                    <td>@pista.EsTechada</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
