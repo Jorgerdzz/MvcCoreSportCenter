@@ -1,6 +1,18 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Data.SqlClient;
 using MvcCoreSportCenter.Models;
 using System.Data;
+
+#region
+//create view VIEW_DATOS_CENTRO
+//as
+//	select C.IdCentro, C.Nombre, C.Direccion, C.Ciudad, C.TipoCentro, C.Estado,
+//    P.IdPista, P.NombrePista, P.PrecioPorHora, P.EsTechada
+//	from Centros as C
+//	inner join Pistas as P
+//	on C.IdCentro = P.IdCentro
+//go
+#endregion
 
 namespace MvcCoreSportCenter.Repositories
 {
