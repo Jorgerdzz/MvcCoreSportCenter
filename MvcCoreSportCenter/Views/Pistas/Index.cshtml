@@ -35,6 +35,7 @@
                 <th>NOMBRE PISTA</th>
                 <th>PRECIO POR HORA</th>
                 <th>TECHADA</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +45,10 @@
                     <td>@pista.NombrePista</td>
                     <td>@pista.PrecioHora</td>
                     <td>@pista.EsTechada</td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Pistas" asp-action="Update" asp-route-idPista="@pista.IdPista">Update</a>
+                        <a class="btn btn-danger" asp-controller="Pistas" asp-action="Delete" asp-route-idPista="@pista.IdPista" asp-route-idCentro="@Model.IdCentro">Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>

@@ -70,5 +70,27 @@ namespace MvcCoreSportCenter.Repositories
             return centros;
         }
 
+        public List<Centro> GetCentrosActivos()
+        {
+            var consulta = from datos in this.tablaCentros.AsEnumerable()
+                            where datos.Field<bool>("Estado") == true
+                            select datos;
+            List<Centro> centros = new List<Centro>();
+            foreach (var row in consulta)
+            {
+                Centro c = new Centro
+                {
+                    IdCentro = row.Field<int>("IdCentro"),
+                    Nombre = row.Field<string>("Nombre"),
+                    Direccion = row.Field<string>("Direccion"),
+                    Ciudad = row.Field<string>("Ciudad"),
+                    TipoCentro = row.Field<string>("TipoCentro"),
+                    Estado = row.Field<bool>("Estado")
+                };
+                centros.Add(c);
+            }
+            return centros;
+        }
+
     }
 }

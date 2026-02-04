@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Reserva>
+
+<h1>Reservas</h1>
+
+<form method="POST">
+    <label>Seleccione un deporte</label>
+    <select name="tipocentro" class="form-control">
+        @foreach(string centro in ViewData["CENTROS"] as List<string>)
+            {
+                <option>@centro</option>
+            }
+     </select>
+     <button class="btn btn-success">Buscar reservas</button>
+</form>
+
+@if(Model != null)
+{
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>ID PISTA</th>
+                <th>ID CLIENTE</th>
+                <th>FECHA RESERVA</th>
+                <th>HORAS</th>
+                <th>PAGADA</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Reserva reserva in Model)
+            {
+                @if (reserva.Horas > 2)
+                {
+                    <tr class="table-danger">
+                        <td>@reserva.IdPista</td>
+                        <td>@reserva.IdCliente</td>
+                        <td>@reserva.FechaReserva</td>
+                        <td>@reserva.Horas</td>
+                        <td>@reserva.Pagada</td>
+                    </tr>
+                }else
+                {
+                    <tr>
+                        <td>@reserva.IdPista</td>
+                        <td>@reserva.IdCliente</td>
+                        <td>@reserva.FechaReserva</td>
+                        <td>@reserva.Horas</td>
+                        <td>@reserva.Pagada</td>
+                    </tr>         
+                }
+            }
+        </tbody>
+    </table>
+}

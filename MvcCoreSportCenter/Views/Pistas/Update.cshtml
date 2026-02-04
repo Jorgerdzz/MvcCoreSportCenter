@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Pista
+
+@if(Model != null)
+{
+    <h1>Modificar pista</h1>
+
+    <form method="POST">
+        <label>Id pista</label>
+        <input type="number" name="idpista" class="form-control" value="@Model.IdPista" />
+        <label>Nombre pista:</label>
+        <input type="text" name="nombrepista" class="form-control" value="@Model.NombrePista" />
+        <label>Precio hora:</label>
+        <input type="number" name="preciohora" class="form-control" value="@Model.PrecioHora" />
+        <label>Techada:</label>
+        <select name="estechada" class="form-control" value="@Model.EsTechada">
+            <option value="true">SI</option>
+            <option value="false">NO</option>
+        </select>
+        <label>Seleccione centro activo</label>
+        <select name="idcentro" class="form-control">
+            @foreach (Centro centro in ViewData["CENTROS"] as List<Centro>)
+            {
+                <option value="@centro.IdCentro">@centro.Nombre</option>
+            }
+        </select>
+        <button class="btn btn-warning">Modificar pista</button>
+    </form>  
+}
